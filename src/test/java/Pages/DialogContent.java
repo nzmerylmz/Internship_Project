@@ -65,6 +65,9 @@ public class DialogContent extends Parent{
     @FindBy(css = "[formcontrolname='priority']>input")
     private WebElement priority;
 
+    @FindBy(xpath="(//ms-edit-button//button)[1]")
+    private WebElement editButton;
+
     WebElement myElement;
     public void findAndSend(String strElement, String value){
         switch (strElement)
@@ -93,6 +96,7 @@ public class DialogContent extends Parent{
             case "deleteButton" : myElement =deleteButton; break;
             case "deleteDialogButton" : myElement =deleteDialogButton; break;
             case "acceptCookiesButton" : myElement =acceptCookiesButton; break;
+            case "editButton" : myElement =editButton; break;
 
         }
 
