@@ -11,10 +11,10 @@ public class DialogContent extends Parent{
         PageFactory.initElements(GWD.getDriver(), this);
     }
 
-    @FindBy(css = "input[placeholder='Username']")
+    @FindBy(css = "input[placeholder='Kullanıcı Adı']")
     private WebElement username;
 
-    @FindBy(css = "input[placeholder='Password']")
+    @FindBy(css = "input[placeholder='Parola']")
     private WebElement password;
 
     @FindBy(css = "button[aria-label='LOGIN']")
@@ -118,10 +118,22 @@ public class DialogContent extends Parent{
     public void SearchAndDelete(String searchText){
         findAndSend("searchInput", searchText);
         findAndClick("searchButton");
-        waitUntilLoading();
+        waitUntilClickable(deleteButton);
         findAndClick("deleteButton");
-        findAndClick("deleteDialogBtn");
+        waitUntilClickable(deleteDialogButton);
+        findAndClick("deleteDialogButton");
     }
+
+    public void SearchAndEdit(String searchText){
+        findAndSend("searchInput", searchText);
+        findAndClick("searchButton");
+        waitUntilLoading();
+        findAndClick("editButton");
+        findAndSend("nameInput", searchText);
+        findAndClick("saveButton");
+    }
+
+
 
 
 
