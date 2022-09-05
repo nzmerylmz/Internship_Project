@@ -1,6 +1,7 @@
 package Pages;
 
 import Utilities.GWD;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -65,7 +66,7 @@ public class DialogContent extends Parent{
     @FindBy(css = "[formcontrolname='priority']>input")
     private WebElement priority;
 
-    @FindBy(xpath = "//ms-edit-button//button")
+    @FindBy(xpath = "//ms-edit-button//button[1]")
     private WebElement editButton;
 
     WebElement myElement;
@@ -116,11 +117,11 @@ public class DialogContent extends Parent{
 
 
     public void SearchAndDelete(String searchText){
+        scrollToUpElement(deleteButton);
         findAndSend("searchInput", searchText);
         findAndClick("searchButton");
-        waitUntilClickable(deleteButton);
+        waitUntilLoading();
         findAndClick("deleteButton");
-        waitUntilClickable(deleteDialogButton);
         findAndClick("deleteDialogButton");
     }
 

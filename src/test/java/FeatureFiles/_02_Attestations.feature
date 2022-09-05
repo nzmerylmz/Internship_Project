@@ -29,7 +29,7 @@ Feature: Attestations Functionality
       |editButton|
 
     And User edit item from Dialog
-      | nameInput | grup769 |
+      | nameInput | grup779 |
 
     And Click on the element in the Dialog content
       | saveButton |
@@ -37,7 +37,7 @@ Feature: Attestations Functionality
     And Success message should be displayed
 
     And User sending the keys in Dialog content
-      | searchInput | grup769 |
+      | searchInput | grup779 |
 
     And Click on the element in the Dialog content
        |deleteButton|
