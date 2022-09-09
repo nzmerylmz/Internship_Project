@@ -51,10 +51,20 @@ public class _02_DepartmentsStep {
 
     @And("User edit item from Dialog")
     public void userEditItemFromDialog(DataTable elements) {
-        List<List<String>> listElement = elements.asLists(String.class);
+        List<String> listElement = elements.asList(String.class);
 
-        for(int i=0;i<listElement.size();i++)
-            dc.findAndSend(listElement.get(i).get(0), listElement.get(i).get(1));
+        for(int i=0;i<listElement.size();i++) {
+            dc.findAndClick(listElement.get(i));
+        }
+        
+        
+    }
 
+    @And("User delete item from Dialog")
+    public void userDeleteItemFromDialog(DataTable elements) {
+        List<String> listElement = elements.asList(String.class);
+        for(int i=0;i<listElement.size();i++) {
+            dc.findAndClick(listElement.get(i));
+        }
     }
 }

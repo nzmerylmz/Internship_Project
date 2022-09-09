@@ -1,9 +1,14 @@
 package Pages;
 
 import Utilities.GWD;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class DialogContent extends Parent{
 
@@ -68,6 +73,12 @@ public class DialogContent extends Parent{
     @FindBy(xpath="(//ms-edit-button//button)[1]")
     private WebElement editButton;
 
+    @FindBy(xpath="//td[contains(text(),'Baris')]//following::div/ms-edit-button")
+    private WebElement editButton2;
+
+    @FindBy(xpath="//td[contains(text(),'Baris77')]//following::div/ms-delete-button")
+    private WebElement deleteButton2;
+
     WebElement myElement;
     public void findAndSend(String strElement, String value){
         switch (strElement)
@@ -97,6 +108,9 @@ public class DialogContent extends Parent{
             case "deleteDialogButton" : myElement =deleteDialogButton; break;
             case "acceptCookiesButton" : myElement =acceptCookiesButton; break;
             case "editButton" : myElement =editButton; break;
+            case "editButton2" : myElement =editButton2; break;
+            case "deleteButton2" : myElement =deleteButton2; break;
+
 
         }
 
@@ -116,21 +130,11 @@ public class DialogContent extends Parent{
 
 
     public void SearchAndDelete(String searchText){
-        findAndSend("searchInput", searchText);
-        findAndClick("searchButton");
-        waitUntilClickable(deleteButton);
-        findAndClick("deleteButton");
-        waitUntilClickable(deleteDialogButton);
-        findAndClick("deleteDialogButton");
+        findAndClick("deleteButton2");
     }
 
     public void SearchAndEdit(String searchText){
-        findAndSend("searchInput", searchText);
-        findAndClick("searchButton");
-        waitUntilLoading();
-        findAndClick("editButton");
-        findAndSend("nameInput", searchText);
-        findAndClick("saveButton");
+        findAndClick("editButton2");
     }
 
 

@@ -15,7 +15,7 @@ Feature: Departments Functionality
        |addButton|
 
       And User sending the keys in the Dialog content
-       |nameInput| grup1|
+       |nameInput| Baris|
        |codeInput| 77|
 
       And Click on the element in the left Nav
@@ -27,30 +27,19 @@ Feature: Departments Functionality
 
       And Success message should be displayed
 
-      And Click on the element in the Dialog content
-       |searchButton|
-
-      And Click on the element in the Dialog content
-       |editButton|
-
       And User edit item from Dialog
-        |nameInput| grup101|
-        |codeInput| 99|
+        |editButton2|
 
-      And Click on the element in the left Nav
-        |Section|
-        |departmentConstants|
+      And User sending the keys in the Dialog content
+        |nameInput| Baris77|
 
       And Click on the element in the Dialog content
-         |saveButton|
+        |saveButton|
 
-      And Success message should be displayed
-
-      And Click on the element in the Dialog content
-        |searchButton|
-
-      And Click on the element in the Dialog content
-        |deleteButton|
+      And User delete item from Dialog
+        |deleteButton2|
 
       And Click on the element in the Dialog content
         |deleteDialogButton|
+
+      And Success message should be displayed
