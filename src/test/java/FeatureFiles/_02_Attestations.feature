@@ -15,7 +15,7 @@ Feature: Attestations Functionality
       | addButton |
 
     And User sending the keys in Dialog content
-      | nameInput | grup99 |
+      | nameInput | grup1 |
 
     And Click on the element in the Dialog content
       | saveButton |
@@ -23,7 +23,7 @@ Feature: Attestations Functionality
     And Success message should be displayed
 
     And User sending the keys in Dialog content
-      | searchInput | grup99 |
+      | searchInput | grup1 |
 
     And Click on the element in the Dialog content
       |searchButton|
@@ -32,21 +32,15 @@ Feature: Attestations Functionality
       |editButton|
 
     And User edit item from Dialog
-      | nameInput | grup999 |
+      | nameInput | grup111 |
 
     And Click on the element in the Dialog content
       | saveButton |
 
     And Success message should be displayed
 
-  Scenario: Create Attestations
-    And Click on the element in the left Nav
-      |humanResources|
-      |humanResourcesSetup|
-      |Attestations|
-
     And User sending the keys in Dialog content
-      | searchInput | grup999 |
+      | searchInput | grup111 |
 
     And Click on the element in the Dialog content
       | searchButton |

@@ -133,7 +133,8 @@ public class DialogContent extends Parent{
     public void SearchAndEdit(String searchText){
         findAndSend("searchInput", searchText);
         findAndClick("searchButton");
-        waitUntilLoading();
+        WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.textToBe(By.cssSelector("div[fxlayoutalign='center center'][class='control-full']"),"Search"));
         findAndClick("editButton");
         findAndSend("nameInput", searchText);
         findAndClick("saveButton");
