@@ -14,8 +14,13 @@ public class DialogContent extends Parent{
     @FindBy(css = "input[placeholder='Username']")
     private WebElement username;
 
+    @FindBy(css = "input[placeholder='Kullanıcı Adı']")
+    private WebElement usernametr;
     @FindBy(css = "input[placeholder='Password']")
     private WebElement password;
+
+    @FindBy(css = "input[placeholder='Parola']")
+    private WebElement passwordtr;
 
     @FindBy(css = "button[aria-label='LOGIN']")
     private WebElement loginButton;
@@ -29,6 +34,8 @@ public class DialogContent extends Parent{
     @FindBy(xpath = "//ms-text-field[@formcontrolname='name']//input")
     private WebElement nameInput;
 
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='description']//input")
+    private WebElement description;
     @FindBy(xpath = "(//ms-text-field[@placeholder='GENERAL.FIELD.SHORTNAME']//input)[2]")
     private WebElement shortName;
 
@@ -62,11 +69,20 @@ public class DialogContent extends Parent{
     @FindBy(css = "[formcontrolname='budgetAccountIntegrationCode']>input")
     private WebElement integrationCode;
 
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='code']//input")
+    private  WebElement integrationCode32;
+
     @FindBy(css = "[formcontrolname='priority']>input")
     private WebElement priority;
 
     @FindBy(xpath="(//ms-edit-button//button)[1]")
     private WebElement editButton;
+
+    @FindBy(xpath = "//ms-text-field[contains(@placeholder,'TITLE.DESCRIPTION')]//input")
+    private WebElement descriptionInput;
+
+
+
 
     WebElement myElement;
     public void findAndSend(String strElement, String value){
@@ -80,6 +96,11 @@ public class DialogContent extends Parent{
             case "searchInput" : myElement =searchInput; break;
             case "integrationCode" : myElement =integrationCode; break;
             case "priority" : myElement =priority; break;
+            case "usernametr" : myElement =usernametr; break;
+            case "passwordtr" : myElement =passwordtr; break;
+            case "description" : myElement =description; break;
+            case "integrationCode32" : myElement =integrationCode32; break;
+            case "descriptionInput" : myElement =descriptionInput; break;
         }
 
         sendKeysFunction(myElement, value);
