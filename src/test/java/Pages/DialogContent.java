@@ -1,9 +1,14 @@
 package Pages;
 
 import Utilities.GWD;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class DialogContent extends Parent{
 
@@ -118,9 +123,9 @@ public class DialogContent extends Parent{
     public void SearchAndDelete(String searchText){
         findAndSend("searchInput", searchText);
         findAndClick("searchButton");
-        waitUntilClickable(deleteButton);
+        WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.textToBe(By.cssSelector("div[fxlayoutalign='center center'][class='control-full']"),"Search"));
         findAndClick("deleteButton");
-        waitUntilClickable(deleteDialogButton);
         findAndClick("deleteDialogButton");
     }
 

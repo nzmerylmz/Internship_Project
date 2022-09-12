@@ -15,8 +15,8 @@ Feature: Positions Functionalty
         | addButton|
 
       And User sending the keys in Dialog content
-        | nameInput | Gulbatu7 |
-        | shortName | gb       |
+        | nameInput | batu7 |
+        | shortName | gb    |
 
       And Click on the element in the Dialog content
         | saveButton|
@@ -24,13 +24,13 @@ Feature: Positions Functionalty
       And Success message should be displayed
 
       And User sending the keys in Dialog content
-        | searchInput | Gulbatu7 |
+        | searchInput | batu7 |
 
       And Click on the element in the Dialog content
         |editButton|
 
       And User edit item from Dialog
-        | nameInput | Gulbatu9 |
+        | nameInput | batu9 |
 
       And Click on the element in the Dialog content
         | saveButton|
@@ -38,7 +38,10 @@ Feature: Positions Functionalty
       And Success message should be displayed
 
       And User sending the keys in Dialog content
-        | searchInput | Gulbatu9 |
+        | searchInput | batu9 |
+
+      And Click on the element in the Dialog content
+        | searchButton |
 
       And Click on the element in the Dialog content
         | deleteButton |
