@@ -15,7 +15,7 @@ Feature: Positions Functionalty
       | addButton|
 
     And User sending the keys in Dialog content
-      | nameInput | gul7 |
+      | nameInput | batu7 |
 
     And Click on the element in the Dialog content
       | saveButton|
@@ -23,13 +23,16 @@ Feature: Positions Functionalty
     And Success message should be displayed
 
     And User sending the keys in Dialog content
-      | searchInput | gul7 |
+      | searchInput | batu7 |
+
+    And Click on the element in the Dialog content
+      | searchButton |
 
     And Click on the element in the Dialog content
       |editButton|
 
     And User edit item from Dialog
-      | nameInput | papatya2 |
+      | nameInput | papatya22 |
 
     And Click on the element in the Dialog content
       | saveButton|
@@ -37,7 +40,10 @@ Feature: Positions Functionalty
     And Success message should be displayed
 
     And User sending the keys in Dialog content
-      | searchInput | papatya2 |
+      | searchInput | papatya22 |
+
+    And Click on the element in the Dialog content
+      | searchButton |
 
     And Click on the element in the Dialog content
       | deleteButton |
