@@ -15,7 +15,7 @@ Feature: Attestations Functionality
       | addButton |
 
     And User sending the keys in Dialog content
-      | nameInput | grup2 |
+      | nameInput | grup1 |
 
     And Click on the element in the Dialog content
       | saveButton |
@@ -23,7 +23,7 @@ Feature: Attestations Functionality
     And Success message should be displayed
 
     And User sending the keys in Dialog content
-      | searchInput | grup2 |
+      | searchInput | grup1 |
 
     And Click on the element in the Dialog content
       |searchButton|
@@ -39,17 +39,8 @@ Feature: Attestations Functionality
 
     And Success message should be displayed
 
-    And User sending the keys in Dialog content
-      | searchInput | grup112 |
-
-    And Click on the element in the Dialog content
-      | searchButton |
-
-    And Click on the element in the Dialog content
-       |deleteButton|
-
-    And Click on the element in the Dialog content
-      |deleteDialogButton|
+    And User delete item from Dialog
+      |grup112|
 
     And Success message should be displayed
 
