@@ -37,17 +37,10 @@ Feature: Positions Functionalty
 
       And Success message should be displayed
 
-      And User sending the keys in Dialog content
-        | searchInput | batu9 |
+      And User delete item from Dialog
+        | batu9 |
 
-      And Click on the element in the Dialog content
-        | searchButton |
-
-      And Click on the element in the Dialog content
-        | deleteButton |
-
-      And Click on the element in the Dialog content
-        | deleteDialogButton |
+      And Success message should be displayed
 
 
 
