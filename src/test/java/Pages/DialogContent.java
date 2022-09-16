@@ -29,7 +29,10 @@ public class DialogContent extends Parent{
     @FindBy(xpath = "//ms-text-field[@formcontrolname='name']//input")
     private WebElement nameInput;
 
-    @FindBy(xpath = "(//ms-text-field[@placeholder='GENERAL.FIELD.SHORTNAME']//input)[2]")
+    @FindBy(xpath = "(//ms-text-field[contains(@placeholder,'FIELD.CODE')]//input)[1]")
+    private WebElement codeInputDialog;
+
+    @FindBy(xpath = "//ms-text-field[contains(@placeholder, 'SHORTNAME')]//input")
     private WebElement shortName;
 
     @FindBy(css = "[formcontrolname='code']>input")
@@ -59,6 +62,7 @@ public class DialogContent extends Parent{
 
     @FindBy(xpath = "//button[contains(text(),'Accept all cookies')]")
     private WebElement acceptCookiesButton;
+
     @FindBy(css = "[formcontrolname='budgetAccountIntegrationCode']>input")
     private WebElement integrationCode;
 
@@ -67,6 +71,24 @@ public class DialogContent extends Parent{
 
     @FindBy(xpath="(//ms-edit-button//button)[1]")
     private WebElement editButton;
+
+    @FindBy(xpath="//ms-text-field[contains(@placeholder, 'ORDER')]//input")
+    private WebElement order;
+
+    @FindBy(xpath="//span[contains(text(),'10')]")
+    private WebElement combobox;
+
+    @FindBy(xpath="//span[contains(text(),' 1000 ')]")
+    private WebElement comboboxAll;
+
+    @FindBy(xpath="(//div[contains(@class,'mat-sort-header-container')])[1]")
+    private WebElement orderUpDown;
+
+    @FindBy(xpath="((//td[contains(text(),'junior')]/following-sibling::td)[5]//button)[1]")
+    private WebElement specificEditButton;
+
+    @FindBy(xpath="((//td[contains(text(),'senior')]/following-sibling::td)[5]//button)[2]")
+    private WebElement specificDeleteButton;
 
     WebElement myElement;
     public void findAndSend(String strElement, String value){
@@ -80,8 +102,9 @@ public class DialogContent extends Parent{
             case "searchInput" : myElement =searchInput; break;
             case "integrationCode" : myElement =integrationCode; break;
             case "priority" : myElement =priority; break;
+            case "codeInputDialog" : myElement =codeInputDialog; break;
+            case "order" : myElement =order; break;
         }
-
         sendKeysFunction(myElement, value);
     }
 
@@ -97,9 +120,13 @@ public class DialogContent extends Parent{
             case "deleteDialogButton" : myElement =deleteDialogButton; break;
             case "acceptCookiesButton" : myElement =acceptCookiesButton; break;
             case "editButton" : myElement =editButton; break;
+            case "combobox" : myElement =combobox; break;
+            case "comboboxAll" : myElement =comboboxAll; break;
+            case "orderUpDown" : myElement =orderUpDown; break;
+            case "specificEditButton" : myElement =specificEditButton; break;
+            case "specificDeleteButton" : myElement =specificDeleteButton; break;
 
         }
-
         clickFunction(myElement);
     }
 
@@ -110,29 +137,6 @@ public class DialogContent extends Parent{
             case "successMessage" : myElement =successMessage; break;
             case "alreadyExist" : myElement =alreadyExist; break;
         }
-
         verifyContainsText(myElement,text);
     }
-
-
-    public void SearchAndDelete(String searchText){
-        findAndSend("searchInput", searchText);
-        findAndClick("searchButton");
-        waitUntilLoading();
-        findAndClick("deleteButton");
-        findAndClick("deleteDialogBtn");
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
