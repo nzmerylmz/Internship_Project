@@ -47,7 +47,7 @@ public class _02_NationalitiesSteps {
     public void userEditItemFromDialog(DataTable elements) {
         List<List<String>> listelement = elements.asLists(String.class);
         for (int i = 0; i < listelement.size(); i++) {
-            dc.findAndSend(listelement.get(i).get(0),listelement.get(i).get(1));
+            dc.SearchAndEdit(listelement.get(i).get(0),listelement.get(i).get(1));
         }
     }
 

@@ -129,7 +129,7 @@ public class DialogContent extends Parent{
         findAndClick("deleteDialogButton");
     }
 
-    public void SearchAndEdit(String searchText) {
+    public void SearchAndEdit(String searchText, String s) {
         findAndSend("searchInput", searchText);
         findAndClick("searchButton");
         waitUntilLoading();

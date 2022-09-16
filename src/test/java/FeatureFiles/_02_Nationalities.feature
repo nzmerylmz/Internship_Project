@@ -31,7 +31,7 @@ Feature: Positions Functionalty
     And Click on the element in the Dialog content
       |editButton|
 
-    And User edit item from Dialog
+    And User sending the keys in Dialog content
       | nameInput | papatya22 |
 
     And Click on the element in the Dialog content
@@ -39,14 +39,7 @@ Feature: Positions Functionalty
 
     And Success message should be displayed
 
-    And User sending the keys in Dialog content
-      | searchInput | papatya22 |
+    And User delete item from Dialog
+      | papatya22 |
 
-    And Click on the element in the Dialog content
-      | searchButton |
-
-    And Click on the element in the Dialog content
-      | deleteButton |
-
-    And Click on the element in the Dialog content
-      | deleteDialogButton |
+    And Success message should be displayed
