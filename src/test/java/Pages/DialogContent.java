@@ -71,6 +71,7 @@ public class DialogContent extends Parent{
     private WebElement priority;
 
     @FindBy(xpath="(//ms-edit-button//button)[1]")
+
     private WebElement editButton;
 
     @FindBy(xpath="//td[contains(text(),'Baris')]//following::div/ms-edit-button")
@@ -130,7 +131,24 @@ public class DialogContent extends Parent{
 
 
     public void SearchAndDelete(String searchText){
+
         findAndClick("deleteButton2");
+
+        findAndSend("searchInput", searchText);
+        findAndClick("searchButton");
+        WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.textToBe(By.cssSelector("div[fxlayoutalign='center center'][class='control-full']"),"Search"));
+        findAndClick("deleteButton");
+        findAndClick("deleteDialogButton");
+    }
+
+    public void SearchAndEdit(String searchText){
+        findAndSend("searchInput", searchText);
+        findAndClick("searchButton");
+        findAndClick("editButton");
+        findAndSend("nameInput", searchText);
+        findAndClick("saveButton");
+
     }
 
     public void SearchAndEdit(String searchText){
