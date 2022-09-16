@@ -19,8 +19,8 @@ public class _01_LoginSteps {
 
     @When("Enter username and password and click login button")
     public void enter_username_and_password_and_click_login_button() {
-        dc.findAndSend("username","richfield.edu");
-        dc.findAndSend("password","Richfield2020!");
+        dc.findAndSend("usernametr","richfield.edu");
+        dc.findAndSend("passwordtr","Richfield2020!");
         dc.findAndClick("loginButton");
         dc.findAndClick("acceptCookiesButton");
     }
