@@ -132,6 +132,7 @@ public class DialogContent extends Parent{
     public void SearchAndEdit(String searchText, String s) {
         findAndSend("searchInput", searchText);
         findAndClick("searchButton");
+        waitUntilLoading();
         findAndClick("editButton");
         findAndSend("nameInput", searchText);
         findAndClick("saveButton");
