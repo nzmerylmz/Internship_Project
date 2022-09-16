@@ -140,6 +140,17 @@ public class DialogContent extends Parent{
         wait.until(ExpectedConditions.textToBe(By.cssSelector("div[fxlayoutalign='center center'][class='control-full']"),"Search"));
         findAndClick("deleteButton");
         findAndClick("deleteDialogButton");
+
+    }
+
+    public void SearchAndEdit(String searchText, String s) {
+        findAndSend("searchInput", searchText);
+        findAndClick("searchButton");
+        waitUntilLoading();
+        findAndClick("editButton");
+        findAndSend("nameInput", searchText);
+        findAndClick("saveButton");
+
     }
 
     public void SearchAndEdit(String searchText){
@@ -154,19 +165,5 @@ public class DialogContent extends Parent{
     public void SearchAndEdit(String searchText){
         findAndClick("editButton2");
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    }
 }
