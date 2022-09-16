@@ -4,6 +4,7 @@ import Utilities.GWD;
 import junit.framework.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -36,6 +37,8 @@ public class Parent {
         element.click();
     }
 
+
+
     public void waitUntilClickable(WebElement element) {
         WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
         wait.until(ExpectedConditions.elementToBeClickable(element));
@@ -47,9 +50,16 @@ public class Parent {
         Assert.assertTrue(element.getText().toLowerCase().contains(text.toLowerCase()));
     }
 
-    public void waitUntilLoading() {
-        WebDriverWait wait=new WebDriverWait(GWD.driver, Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.numberOfElementsToBe(By.cssSelector("fuse-progress-bar > *"), 0));
+    public WebElement waitForElementToBeRefreshedAndClickable(WebDriver driver, By by) {
+        return new WebDriverWait(driver, Duration.ofSeconds(30))
+                .until(ExpectedConditions.refreshed(
+                        ExpectedConditions.elementToBeClickable(by)));
+    }
+
+    public void scrollToUpElement(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) GWD.getDriver();
+        js.executeScript("arguments[0].setAttribute('style', 'top:0px')",element);
+        js.executeScript("arguments[0].scrollIntoView();",element);
     }
 
 }
