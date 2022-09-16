@@ -74,6 +74,12 @@ public class DialogContent extends Parent{
 
     private WebElement editButton;
 
+    @FindBy(xpath="//td[contains(text(),'Baris')]//following::div/ms-edit-button")
+    private WebElement editButton2;
+
+    @FindBy(xpath="//td[contains(text(),'Baris77')]//following::div/ms-delete-button")
+    private WebElement deleteButton2;
+
     WebElement myElement;
     public void findAndSend(String strElement, String value){
         switch (strElement)
@@ -103,6 +109,9 @@ public class DialogContent extends Parent{
             case "deleteDialogButton" : myElement =deleteDialogButton; break;
             case "acceptCookiesButton" : myElement =acceptCookiesButton; break;
             case "editButton" : myElement =editButton; break;
+            case "editButton2" : myElement =editButton2; break;
+            case "deleteButton2" : myElement =deleteButton2; break;
+
 
         }
 
@@ -122,6 +131,9 @@ public class DialogContent extends Parent{
 
 
     public void SearchAndDelete(String searchText){
+
+        findAndClick("deleteButton2");
+
         findAndSend("searchInput", searchText);
         findAndClick("searchButton");
         WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
@@ -136,7 +148,14 @@ public class DialogContent extends Parent{
         findAndClick("editButton");
         findAndSend("nameInput", searchText);
         findAndClick("saveButton");
+
     }
+
+    public void SearchAndEdit(String searchText){
+        findAndClick("editButton2");
+    }
+
+
 
 
 
