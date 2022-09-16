@@ -70,7 +70,8 @@ public class DialogContent extends Parent{
     @FindBy(css = "[formcontrolname='priority']>input")
     private WebElement priority;
 
-    @FindBy(xpath = "(//ms-edit-button//button)[1]")
+    @FindBy(xpath="(//ms-edit-button//button)[1]")
+
     private WebElement editButton;
 
     WebElement myElement;
