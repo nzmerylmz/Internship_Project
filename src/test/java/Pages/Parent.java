@@ -56,4 +56,10 @@ public class Parent {
                         ExpectedConditions.elementToBeClickable(by)));
     }
 
+    public void scrollToUpElement(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) GWD.getDriver();
+        js.executeScript("arguments[0].setAttribute('style', 'top:0px')",element);
+        js.executeScript("arguments[0].scrollIntoView();",element);
+    }
+
 }

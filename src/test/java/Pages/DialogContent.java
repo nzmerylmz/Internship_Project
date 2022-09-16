@@ -1,9 +1,14 @@
 package Pages;
 
 import Utilities.GWD;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class DialogContent extends Parent{
 
@@ -11,10 +16,10 @@ public class DialogContent extends Parent{
         PageFactory.initElements(GWD.getDriver(), this);
     }
 
-    @FindBy(css = "input[placeholder='Username']")
+    @FindBy(css = "input[placeholder='Kullanıcı Adı']")
     private WebElement username;
 
-    @FindBy(css = "input[placeholder='Password']")
+    @FindBy(css = "input[placeholder='Parola']")
     private WebElement password;
 
     @FindBy(css = "button[aria-label='LOGIN']")
@@ -70,7 +75,9 @@ public class DialogContent extends Parent{
     private WebElement priority;
 
     @FindBy(xpath="(//ms-edit-button//button)[1]")
+
     private WebElement editButton;
+
 
     @FindBy(xpath="//ms-text-field[contains(@placeholder, 'ORDER')]//input")
     private WebElement order;
@@ -89,6 +96,13 @@ public class DialogContent extends Parent{
 
     @FindBy(xpath="((//td[contains(text(),'senior')]/following-sibling::td)[5]//button)[2]")
     private WebElement specificDeleteButton;
+
+    @FindBy(xpath="//td[contains(text(),'Baris')]//following::div/ms-edit-button")
+    private WebElement editButton2;
+
+    @FindBy(xpath="//td[contains(text(),'Baris77')]//following::div/ms-delete-button")
+    private WebElement deleteButton2;
+
 
     WebElement myElement;
     public void findAndSend(String strElement, String value){
@@ -120,11 +134,17 @@ public class DialogContent extends Parent{
             case "deleteDialogButton" : myElement =deleteDialogButton; break;
             case "acceptCookiesButton" : myElement =acceptCookiesButton; break;
             case "editButton" : myElement =editButton; break;
+
             case "combobox" : myElement =combobox; break;
             case "comboboxAll" : myElement =comboboxAll; break;
             case "orderUpDown" : myElement =orderUpDown; break;
             case "specificEditButton" : myElement =specificEditButton; break;
             case "specificDeleteButton" : myElement =specificDeleteButton; break;
+
+            case "editButton2" : myElement =editButton2; break;
+            case "deleteButton2" : myElement =deleteButton2; break;
+
+
 
         }
         clickFunction(myElement);
@@ -139,4 +159,64 @@ public class DialogContent extends Parent{
         }
         verifyContainsText(myElement,text);
     }
+
+
+
+
+    public void SearchAndDelete(String searchText){
+
+        findAndClick("deleteButton2");
+
+        findAndSend("searchInput", searchText);
+        findAndClick("searchButton");
+        WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.textToBe(By.cssSelector("div[fxlayoutalign='center center'][class='control-full']"),"Search"));
+        findAndClick("deleteButton");
+        findAndClick("deleteDialogButton");
+
+    }
+
+    public void SearchAndEdit(String searchText){
+        findAndSend("searchInput", searchText);
+        findAndClick("searchButton");
+        waitUntilLoading();
+        findAndClick("editButton");
+        findAndSend("nameInput", searchText);
+        findAndClick("saveButton");
+    }
+
+
+
+
+
+
+
+
+
+    }
+
+    public void SearchAndEdit(String searchText, String s) {
+        findAndSend("searchInput", searchText);
+        findAndClick("searchButton");
+        waitUntilLoading();
+        findAndClick("editButton");
+        findAndSend("nameInput", searchText);
+        findAndClick("saveButton");
+
+    }
+
+    public void SearchAndEdit(String searchText){
+        findAndSend("searchInput", searchText);
+        findAndClick("searchButton");
+        findAndClick("editButton");
+        findAndSend("nameInput", searchText);
+        findAndClick("saveButton");
+
+    }
+
+    public void SearchAndEdit(String searchText){
+        findAndClick("editButton2");
+    }
+    }
+
 }

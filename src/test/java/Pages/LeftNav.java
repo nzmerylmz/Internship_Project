@@ -56,8 +56,47 @@ public class LeftNav extends Parent{
     @FindBy(xpath="//span[text()='Subject Categories']")
     private WebElement subjectCategories;
 
+
     @FindBy(xpath="//span[text()='Grade Levels']")
     private WebElement gradeLevels;
+
+    @FindBy(xpath="(//span[text()='Positions'])[1]")
+    private WebElement Positions;
+
+    @FindBy(xpath=" (//span[text()='Nationalities'])[1]")
+    private WebElement Nationalities;
+
+
+
+
+
+    @FindBy(xpath="(//span[text()='Departments'])")
+    private WebElement Departments;
+
+    @FindBy(xpath="(//span[text()='Section'])")
+    private WebElement Section;
+
+    @FindBy(xpath="(//span[text()='Department Constants'])")
+    private WebElement departmentConstants;
+
+
+
+
+
+    @FindBy(xpath="(//span[text()='Attestations'])[1]")
+    private WebElement Attestations;
+
+
+
+
+
+
+
+
+
+
+
+
 
     WebElement myElement;
     public void findAndClick(String strElement){
@@ -78,10 +117,25 @@ public class LeftNav extends Parent{
             case "schoolSetup" : myElement =schoolSetup; break;
             case "humanResourcesSetup" : myElement =humanResourcesSetup; break;
             case "educationSetup" : myElement =educationSetup; break;
+
             case "subjectCategories" : myElement =subjectCategories; break;
             case "gradeLevels" : myElement =gradeLevels; break;
         }
 
+
+            case "Positions" : myElement =Positions; break;
+
+
+            case "Nationalities" : myElement =Nationalities; break;
+
+
+            case "Departments" : myElement =Departments; break;
+            case "Section" : myElement =Section; break;
+            case "departmentConstants" : myElement =departmentConstants; break;
+
+            case "Attestations" : myElement =Attestations; break;
+
+        }
         clickFunction(myElement);
     }
 
