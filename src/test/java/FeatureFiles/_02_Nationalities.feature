@@ -20,8 +20,6 @@ Feature: Positions Functionalty
     And Click on the element in the Dialog content
       | saveButton|
 
-    And Success message should be displayed
-
     And User sending the keys in Dialog content
       | searchInput | uyu |
 
@@ -32,7 +30,7 @@ Feature: Positions Functionalty
       |editButton|
 
     And User sending the keys in Dialog content
-      | nameInput | yat |
+      | nameInput | kalk |
 
     And Click on the element in the Dialog content
       | saveButton|
@@ -40,6 +38,6 @@ Feature: Positions Functionalty
     And Success message should be displayed
 
     And User delete item from Dialog
-      | yat |
+      | kalk |
 
     And Success message should be displayed
