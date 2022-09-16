@@ -20,11 +20,15 @@ public class DialogContent extends Parent{
     private WebElement username;
 
 
+    @FindBy(css = "input[placeholder='Parola']")
+
+
     @FindBy(css = "input[placeholder='Kullanıcı Adı']")
     private WebElement usernametr;
     @FindBy(css = "input[placeholder='Password']")
 
     @FindBy(css = "input[placeholder='Parola']")
+
 
     private WebElement password;
 
@@ -39,6 +43,9 @@ public class DialogContent extends Parent{
 
     @FindBy(xpath = "//ms-add-button[contains(@tooltip, 'TITLE.ADD')]//button")
     private WebElement addButton;
+
+    @FindBy(xpath = "//ms-add-button[contains(@tooltip, 'BUTTON.ADD')]//button")
+    private WebElement addButtonfield;
 
     @FindBy(xpath = "//ms-text-field[@formcontrolname='name']//input")
     private WebElement nameInput;
@@ -86,6 +93,16 @@ public class DialogContent extends Parent{
     @FindBy(css = "[formcontrolname='budgetAccountIntegrationCode']>input")
     private WebElement integrationCode;
 
+
+    @FindBy (css = "[formcontrolname='priority']>input")
+    private WebElement priority;
+
+    @FindBy( xpath="(//ms-edit-button//button)[1]")
+    private WebElement editButton;
+
+    @FindBy( xpath="//ms-text-field[@placeholder='GENERAL.FIELD.NAME']//input")
+    private WebElement namefields;
+
     @FindBy(xpath = "//ms-text-field[@formcontrolname='code']//input")
     private  WebElement integrationCode32;
 
@@ -129,6 +146,7 @@ public class DialogContent extends Parent{
 
 
 
+
     WebElement myElement;
     public void findAndSend(String strElement, String value){
         switch (strElement)
@@ -141,6 +159,9 @@ public class DialogContent extends Parent{
             case "searchInput" : myElement =searchInput; break;
             case "integrationCode" : myElement =integrationCode; break;
             case "priority" : myElement =priority; break;
+
+            case "namefields" : myElement =namefields; break;
+        }
 
             case "usernametr" : myElement =usernametr; break;
             case "passwordtr" : myElement =passwordtr; break;
@@ -167,6 +188,7 @@ public class DialogContent extends Parent{
             case "deleteDialogButton" : myElement =deleteDialogButton; break;
             case "acceptCookiesButton" : myElement =acceptCookiesButton; break;
             case "editButton" : myElement =editButton; break;
+            case "addButtonfield" : myElement =addButtonfield; break;
 
             case "combobox" : myElement =combobox; break;
             case "comboboxAll" : myElement =comboboxAll; break;
