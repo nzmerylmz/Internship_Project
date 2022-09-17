@@ -1,6 +1,7 @@
 package StepDefinitions;
 
 import Pages.DialogContent;
+import Pages.FormContent;
 import Pages.LeftNav;
 import Utilities.GWD;
 import io.cucumber.datatable.DataTable;
@@ -16,6 +17,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
@@ -27,12 +29,59 @@ public class StepsRepository {
 
     LeftNav ln=new LeftNav();
     DialogContent dc=new DialogContent();
+
+    FormContent fc=new FormContent();
+
+    @And("Click on the element in the Form Content")
+    public void clickOnTheElementInTheFormContent(DataTable elements) {
+        List<String> listElement = elements.asList(String.class);
+
+        for (int i = 0; i < listElement.size(); i++) {
+            fc.findAndClick(listElement.get(i));
+        }
+    }
+
     @And("Click on the element in the Left Nav")
     public void clickOnTheElementInTheLeftNav(DataTable elements) {
         List<String> listElement = elements.asList(String.class);
         for (int i = 0; i < listElement.size(); i++) {
             ln.findAndClick(listElement.get(i));
         }
+
+    }
+    @And("User edit and save in Dialog content")
+    public void userEditAndSaveInDialogContent(DataTable elements) {
+        List<List<String>> listElement = elements.asLists(String.class);
+
+        for (int i = 0; i < listElement.size(); i++) {
+            dc.findAndSend(listElement.get(i).get(0), listElement.get(i).get(1));
+        }
+    }
+    @And("User delete item from Dialog")
+    public void userDeleteItemFromDialog(DataTable elements) throws AWTException {
+        List<List<String>> listElement = elements.asLists(String.class);
+
+        for (int i = 0; i < listElement.size(); i++) {
+            dc.SearchAndDeletee(listElement.get(i).get(1));
+        }
+    }
+
+    @And("User sending the keys in Dialog content")
+    public void userSendingTheKeysInDialogContent(DataTable elements) {
+        List<List<String>> listElement = elements.asLists(String.class);
+
+        for (int i = 0; i < listElement.size(); i++)
+            dc.findAndSend(listElement.get(i).get(0), listElement.get(i).get(1));
+    }
+
+    @And("User sending the keys and edit in Dialog content")
+    public void userSendingTheKeysAndEditInDialogContent(DataTable elements) throws AWTException {
+        List<List<String>> listElement = elements.asLists(String.class);
+
+        for (int i = 0; i < listElement.size(); i++) {
+            dc.SearchAndClear(listElement.get(i).get(1));
+        }
+
 
     }
 

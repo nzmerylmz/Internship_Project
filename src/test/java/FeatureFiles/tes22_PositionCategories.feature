@@ -7,12 +7,12 @@ Feature: Position Functionality
 
   Scenario: Create a Position
 
-    And Click on the element in the left Nav
-      | setupOne      |
+    And Click on the element in the Left Nav
+      | humanResources      |
 
-      | parameters |
+      | humanResourcesSetup |
 
-      | bankAccounts  |
+      | positionCategories  |
 
     And Click on the element in the Dialog
       | addButton |
@@ -20,14 +20,6 @@ Feature: Position Functionality
 
     And User sending the keys in Dialog content
       | nameInput | sanfrancisco |
-      | iban | TR1234567891234567 |
-
-    And Click on the element in the Form Content
-      |   currency|
-      |   currencyTry|
-
-    And User sending the keys in Dialog content
-      | integrationCode2 | 12345 |
 
 
     And Click on the element in the Dialog
@@ -35,33 +27,34 @@ Feature: Position Functionality
 
     Then Success message should be displayed
 
-    #edit------------------------
+
     And User sending the keys and edit in Dialog content
       | nameInput | sanfrancisco |
-
     And User edit and save in Dialog content
       | nameInput | california |
-      | iban | TR1234567891234567 |
-      | integrationCode2 | 12345 |
 
     And Click on the element in the Dialog
       | saveButton |
 
     Then Success message should be displayed
+
 
   Scenario: Delete a Position
 
-    And Click on the element in the left Nav
-      | setupOne      |
+    And Click on the element in the Left Nav
+      | humanResources      |
 
-      | parameters |
+      | humanResourcesSetup |
 
-      | bankAccounts  |
+      | positionCategories  |
 
+    And User initiates delete button
     And User delete item from Dialog
       | nameInput | california |
 
 
     Then Success message should be displayed
+
+
 
 

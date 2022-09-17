@@ -89,25 +89,14 @@ public class DialogContent extends Parent{
 
     @FindBy(css = "[formcontrolname='priority']>input")
     private WebElement priority;
-   //melike------------------------------------------
    @FindBy(xpath = "(//ms-edit-button[@class='ng-star-inserted']//button)[1]")
    private WebElement editButton;
 
     @FindBy(xpath = "//ms-masked-text-field[@formcontrolname='iban']//input")
     private WebElement iban;
 
-    //currency
-
     @FindBy(xpath = "//ms-text-field[@formcontrolname='integrationCode']//input")
     private WebElement integrationCode2; //bankAccount kısmı
-
-
-
-
-
-
-
-
 
 
     @FindBy( xpath="//ms-text-field[@placeholder='GENERAL.FIELD.NAME']//input")
@@ -201,17 +190,6 @@ public class DialogContent extends Parent{
         sendKeysFunction(myElement, value);
     }
 
-    public void findAndSendWithoutScroll(String strElement, String value){
-        switch (strElement)
-        {
-            case "searchInput" : myElement =searchInput; break;
-        }
-        sendKeysFunctionWithoutScroll(myElement, value);
-    }
-
-
-
-
     public void findAndClick(String strElement){
         switch (strElement)
         {
@@ -268,7 +246,7 @@ public class DialogContent extends Parent{
         verifyContainsText(myElement,text);
     }
     public void SearchAndClear(String searchText) throws AWTException {
-        findAndSendWithoutScroll("searchInput", searchText);
+        findAndSend("searchInput", searchText);
         findAndClickWithoutScroll("searchButton");
 
         WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
@@ -277,7 +255,7 @@ public class DialogContent extends Parent{
 
     }
    public void SearchAndDeletee(String searchText) throws AWTException {
-       findAndSendWithoutScroll("searchInput", searchText);
+       findAndSend("searchInput", searchText);
        findAndClickWithoutScroll("searchButton");
 
        WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
