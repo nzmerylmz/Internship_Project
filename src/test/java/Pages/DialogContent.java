@@ -16,24 +16,11 @@ public class DialogContent extends Parent{
         PageFactory.initElements(GWD.getDriver(), this);
     }
 
-    @FindBy(css = "input[placeholder='Kullanıcı Adı']")
+    @FindBy(css = "input[formcontrolname='username']")
     private WebElement username;
 
-
-    @FindBy(css = "input[placeholder='Parola']")
-
-
-    @FindBy(css = "input[placeholder='Kullanıcı Adı']")
-    private WebElement usernametr;
-    @FindBy(css = "input[placeholder='Password']")
-
-    @FindBy(css = "input[placeholder='Parola']")
-
-
+    @FindBy(css = "input[formcontrolname='password']")
     private WebElement password;
-
-    @FindBy(css = "input[placeholder='Parola']")
-    private WebElement passwordtr;
 
     @FindBy(css = "button[aria-label='LOGIN']")
     private WebElement loginButton;
@@ -50,17 +37,19 @@ public class DialogContent extends Parent{
     @FindBy(xpath = "//ms-text-field[@formcontrolname='name']//input")
     private WebElement nameInput;
 
-
     @FindBy(xpath = "//ms-text-field[@formcontrolname='description']//input")
     private WebElement description;
-    @FindBy(xpath = "(//ms-text-field[@placeholder='GENERAL.FIELD.SHORTNAME']//input)[2]")
 
     @FindBy(xpath = "(//ms-text-field[contains(@placeholder,'FIELD.CODE')]//input)[1]")
     private WebElement codeInputDialog;
 
     @FindBy(xpath = "//ms-text-field[contains(@placeholder, 'SHORTNAME')]//input")
-
     private WebElement shortName;
+
+    @FindBy(xpath = "(//ms-text-field[contains(@placeholder, 'SHORTNAME')]//input)[2]")
+    private WebElement shortName2;
+
+
 
     @FindBy(css = "[formcontrolname='code']>input")
     private WebElement codeInput;
@@ -93,7 +82,6 @@ public class DialogContent extends Parent{
     @FindBy(css = "[formcontrolname='budgetAccountIntegrationCode']>input")
     private WebElement integrationCode;
 
-
     @FindBy (css = "[formcontrolname='priority']>input")
     private WebElement priority;
 
@@ -105,20 +93,8 @@ public class DialogContent extends Parent{
 
     @FindBy(xpath = "//ms-text-field[@formcontrolname='code']//input")
     private  WebElement integrationCode32;
-
-    @FindBy(css = "[formcontrolname='priority']>input")
-    private WebElement priority;
-
-    @FindBy(xpath="(//ms-edit-button//button)[1]")
-
-    private WebElement editButton;
-
-
     @FindBy(xpath = "//ms-text-field[contains(@placeholder,'TITLE.DESCRIPTION')]//input")
     private WebElement descriptionInput;
-
-
-
 
     @FindBy(xpath="//ms-text-field[contains(@placeholder, 'ORDER')]//input")
     private WebElement order;
@@ -144,9 +120,6 @@ public class DialogContent extends Parent{
     @FindBy(xpath="//td[contains(text(),'Baris77')]//following::div/ms-delete-button")
     private WebElement deleteButton2;
 
-
-
-
     WebElement myElement;
     public void findAndSend(String strElement, String value){
         switch (strElement)
@@ -159,18 +132,13 @@ public class DialogContent extends Parent{
             case "searchInput" : myElement =searchInput; break;
             case "integrationCode" : myElement =integrationCode; break;
             case "priority" : myElement =priority; break;
-
             case "namefields" : myElement =namefields; break;
-        }
-
-            case "usernametr" : myElement =usernametr; break;
-            case "passwordtr" : myElement =passwordtr; break;
             case "description" : myElement =description; break;
             case "integrationCode32" : myElement =integrationCode32; break;
             case "descriptionInput" : myElement =descriptionInput; break;
-
             case "codeInputDialog" : myElement =codeInputDialog; break;
             case "order" : myElement =order; break;
+            case "shortName2" : myElement =shortName2; break;
 
         }
         sendKeysFunction(myElement, value);
@@ -189,13 +157,11 @@ public class DialogContent extends Parent{
             case "acceptCookiesButton" : myElement =acceptCookiesButton; break;
             case "editButton" : myElement =editButton; break;
             case "addButtonfield" : myElement =addButtonfield; break;
-
             case "combobox" : myElement =combobox; break;
             case "comboboxAll" : myElement =comboboxAll; break;
             case "orderUpDown" : myElement =orderUpDown; break;
             case "specificEditButton" : myElement =specificEditButton; break;
             case "specificDeleteButton" : myElement =specificDeleteButton; break;
-
             case "editButton2" : myElement =editButton2; break;
             case "deleteButton2" : myElement =deleteButton2; break;
 
@@ -215,63 +181,5 @@ public class DialogContent extends Parent{
         verifyContainsText(myElement,text);
     }
 
-
-
-
-    public void SearchAndDelete(String searchText){
-
-        findAndClick("deleteButton2");
-
-        findAndSend("searchInput", searchText);
-        findAndClick("searchButton");
-        WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.textToBe(By.cssSelector("div[fxlayoutalign='center center'][class='control-full']"),"Search"));
-        findAndClick("deleteButton");
-        findAndClick("deleteDialogButton");
-
-    }
-
-    public void SearchAndEdit(String searchText){
-        findAndSend("searchInput", searchText);
-        findAndClick("searchButton");
-        waitUntilLoading();
-        findAndClick("editButton");
-        findAndSend("nameInput", searchText);
-        findAndClick("saveButton");
-    }
-
-
-
-
-
-
-
-
-
-    }
-
-    public void SearchAndEdit(String searchText, String s) {
-        findAndSend("searchInput", searchText);
-        findAndClick("searchButton");
-        waitUntilLoading();
-        findAndClick("editButton");
-        findAndSend("nameInput", searchText);
-        findAndClick("saveButton");
-
-    }
-
-    public void SearchAndEdit(String searchText){
-        findAndSend("searchInput", searchText);
-        findAndClick("searchButton");
-        findAndClick("editButton");
-        findAndSend("nameInput", searchText);
-        findAndClick("saveButton");
-
-    }
-
-    public void SearchAndEdit(String searchText){
-        findAndClick("editButton2");
-    }
-    }
-
 }
+

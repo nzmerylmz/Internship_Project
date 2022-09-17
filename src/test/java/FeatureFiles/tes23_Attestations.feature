@@ -6,42 +6,45 @@ Feature: Attestations Functionality
     Then User should login successfully
 
   Scenario: Create Attestations
-    And Click on the element in the left Nav
+    And Click on the element in the Left Nav
     |humanResources|
     |humanResourcesSetup|
     |Attestations|
 
-    And Click on the element in the Dialog content
+    And Click on the element in the Dialog
       | addButton |
 
-    And User sending the keys in Dialog content
+    And User sends keys in the Dialog Content
       | nameInput | grup1 |
 
-    And Click on the element in the Dialog content
+    And Click on the element in the Dialog
       | saveButton |
 
     And Success message should be displayed
 
-    And User sending the keys in Dialog content
+    And User sends keys in the Dialog Content
       | searchInput | grup1 |
 
-    And Click on the element in the Dialog content
+    And Click on the element in the Dialog
       |searchButton|
 
-    And Click on the element in the Dialog content
+    And User initiates edit button
+    And Click on the element in the Dialog
       |editButton|
 
-    And User edit item from Dialog
+    And User sends keys in the Dialog Content
       | nameInput | grup112 |
 
-    And Click on the element in the Dialog content
+    And Click on the element in the Dialog
       | saveButton |
 
     And Success message should be displayed
 
-    And User delete item from Dialog
-      |grup112|
+    And User initiates delete button
 
+    And Click on the element in the Dialog
+      | deleteButton       |
+      | deleteDialogButton |
     And Success message should be displayed
 
 

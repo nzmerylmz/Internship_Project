@@ -10,15 +10,15 @@ Feature: Fields Functionality
   Scenario: Create Discounts
 
     When Create a discounts
-    Then succes message should be displayed
+    Then Success message should be displayed
 
   Scenario: Edit Discounts
 
     When User edit the discounts
-    Then succes message should be displayed
+    Then Success message should be displayed
 
 
   Scenario:  Delete Discounts
 
     When User delete the discounts
-    Then succes message should be displayed
+    Then Success message should be displayed
