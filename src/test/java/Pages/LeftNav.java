@@ -53,6 +53,14 @@ public class LeftNav extends Parent{
     @FindBy(xpath="(//span[text()='Setup'])[4]")
     private WebElement educationSetup;
 
+    @FindBy(xpath="//span[text()='Position Categories']")
+    private WebElement positionCategories;
+
+    @FindBy(xpath="(//span[text()='Bank Accounts'])[1]")
+    private WebElement bankAccounts;
+
+
+
 
 
 
@@ -79,6 +87,8 @@ public class LeftNav extends Parent{
             case "schoolSetup" : myElement =schoolSetup; break;
             case "humanResourcesSetup" : myElement =humanResourcesSetup; break;
             case "educationSetup" : myElement =educationSetup; break;
+            case "positionCategories" : myElement =positionCategories; break;
+            case "bankAccounts" : myElement =bankAccounts; break;
         }
 
         clickFunction(myElement);

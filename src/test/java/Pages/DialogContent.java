@@ -1,9 +1,16 @@
 package Pages;
 
 import Utilities.GWD;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.time.Duration;
 
 public class DialogContent extends Parent{
 
@@ -11,10 +18,10 @@ public class DialogContent extends Parent{
         PageFactory.initElements(GWD.getDriver(), this);
     }
 
-    @FindBy(css = "input[placeholder='Username']")
+    @FindBy(css = "input[placeholder='Kullanıcı Adı']")
     private WebElement username;
 
-    @FindBy(css = "input[placeholder='Password']")
+    @FindBy(css = "input[placeholder='Parola']")
     private WebElement password;
 
     @FindBy(css = "button[aria-label='LOGIN']")
@@ -64,6 +71,25 @@ public class DialogContent extends Parent{
 
     @FindBy(css = "[formcontrolname='priority']>input")
     private WebElement priority;
+   //melike------------------------------------------
+   @FindBy(xpath = "(//ms-edit-button[@class='ng-star-inserted']//button)[1]")
+   private WebElement editButton;
+
+    @FindBy(xpath = "//ms-masked-text-field[@formcontrolname='iban']//input")
+    private WebElement iban;
+
+    //currency
+
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='integrationCode']//input")
+    private WebElement integrationCode2; //bankAccount kısmı
+
+
+
+
+
+
+
+
 
     WebElement myElement;
     public void findAndSend(String strElement, String value){
@@ -77,10 +103,22 @@ public class DialogContent extends Parent{
             case "searchInput" : myElement =searchInput; break;
             case "integrationCode" : myElement =integrationCode; break;
             case "priority" : myElement =priority; break;
+            case "iban" : myElement =iban; break;
+            case "integrationCode2" : myElement =integrationCode2; break;
         }
-
         sendKeysFunction(myElement, value);
     }
+
+    public void findAndSendWithoutScroll(String strElement, String value){
+        switch (strElement)
+        {
+            case "searchInput" : myElement =searchInput; break;
+        }
+        sendKeysFunctionWithoutScroll(myElement, value);
+    }
+
+
+
 
     public void findAndClick(String strElement){
         switch (strElement)
@@ -89,15 +127,26 @@ public class DialogContent extends Parent{
             case "addButton" : myElement =addButton; break;
             case "saveButton" : myElement =saveButton; break;
             case "closeDialog" : myElement =closeDialog; break;
-            case "searchButton" : myElement =searchButton; break;
-            case "deleteButton" : myElement =deleteButton; break;
             case "deleteDialogButton" : myElement =deleteDialogButton; break;
             case "acceptCookiesButton" : myElement =acceptCookiesButton; break;
+
 
         }
 
         clickFunction(myElement);
     }
+
+    public void findAndClickWithoutScroll(String strElement){
+        switch (strElement)
+        {
+            case "searchButton" : myElement =searchButton; break;
+            case "editButton" : myElement = editButton; break;
+            case "deleteButton" : myElement = deleteButton; break;
+        }
+
+        clickFunctionWithoutScroll(myElement);
+    }
+
 
     public void findAndContainsText(String strElement, String text){
         switch (strElement)
@@ -109,26 +158,24 @@ public class DialogContent extends Parent{
 
         verifyContainsText(myElement,text);
     }
+    public void SearchAndClear(String searchText) throws AWTException {
+        findAndSendWithoutScroll("searchInput", searchText);
+        findAndClickWithoutScroll("searchButton");
 
+        WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.textToBe(By.cssSelector("div[fxlayoutalign='center center'][class='control-full']"),"Search"));
+        findAndClickWithoutScroll("editButton");
 
-    public void SearchAndDelete(String searchText){
-        findAndSend("searchInput", searchText);
-        findAndClick("searchButton");
-        waitUntilLoading();
-        findAndClick("deleteButton");
-        findAndClick("deleteDialogBtn");
     }
+   public void SearchAndDeletee(String searchText) throws AWTException {
+       findAndSendWithoutScroll("searchInput", searchText);
+       findAndClickWithoutScroll("searchButton");
 
-
-
-
-
-
-
-
-
-
-
-
-
+       WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
+       wait.until(ExpectedConditions.textToBe(By.cssSelector("div[fxlayoutalign='center center'][class='control-full']"),"Search"));
+       findAndClickWithoutScroll("deleteButton");
+       findAndClick("deleteDialogButton");
+   }
 }
+
+
