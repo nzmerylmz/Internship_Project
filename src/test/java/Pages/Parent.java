@@ -62,4 +62,9 @@ public class Parent {
         js.executeScript("arguments[0].scrollIntoView();",element);
     }
 
+    public void waitUntilVisibleofSuccessMessage(WebDriver driver,By by) {
+        WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
+
 }

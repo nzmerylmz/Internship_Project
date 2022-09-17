@@ -10,6 +10,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.poi.ss.usermodel.*;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -17,6 +20,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
+
+import static Utilities.GWD.getDriver;
 
 public class StepsRepository {
 
@@ -154,6 +159,37 @@ public class StepsRepository {
         dc.findAndClick("saveButton");
     }
 
+    @And("Success edit message should be displayed")
+    public void successEditMessageShouldBeDisplayed() {
+        dc.findAndContainsText("successMessage","success");
+    }
+
+    @And("Success delete message should be displayed")
+    public void successDeleteMessageShouldBeDisplayed() {
+        dc.findAndContainsText("successMessage","success");}
+
+    @And("Send keys to the Name area")
+    public void sendKeysToTheNameArea() {
+        dc.findAndSend("nameInEdit1","group1-edit");
+    }
+
+    @And("Click on the element in the Dialog to Delete the Edited document type")
+    public void clickOnTheElementInTheDialogToDeleteTheEditedDocumentType(DataTable elements) {
+        List<String> listElement = elements.asList(String.class);
+        for (int i = 0; i < listElement.size(); i++) {
+            dc.findAndClick(listElement.get(i));
+            if (listElement.get(i).equals("searchButton"))
+                dc.waitForElementToBeRefreshedAndClickable(GWD.getDriver(), By.xpath("//ms-search-button//button"));
+        }
+    }
+
+    @And("Click on Esc on the keyboard")
+    public void clickOnEscOnTheKeyboard() {
+        Actions aksiyonlar=new Actions(getDriver());
+        Action aksiyon=aksiyonlar.keyDown(Keys.ESCAPE).build();
+        aksiyon.perform();
+    }
+
     @When("User edit the discounts")
     public void editADiscount() {
         dc.findAndSend("descriptionInput", "grup1");
@@ -174,6 +210,52 @@ public class StepsRepository {
         wait.until(ExpectedConditions.textToBe(By.cssSelector("div[fxlayoutalign='center center'][class='control-full']"), "Search"));
         dc.findAndClick("deleteButton");
         dc.findAndClick("deleteDialogButton");
+    }
+    @And("Click on the element in the Dialog New Document")
+    public void clickOnTheElementInTheDialogNewDocument(DataTable elements) {
+        List<String> listElement = elements.asList(String.class);
+        for (int i = 0; i < listElement.size(); i++) {
+            dc.findAndClick(listElement.get(i));
+        }
+    }
+
+    @And("Click on save button")
+    public void clickOnSaveButton() {
+        dc.findAndClick("saveButton");
+
+    }
+
+
+    @And("Edit the new created document type")
+    public void editTheNewCreatedDocumentType() {
+        dc.findAndSend("nameInEdit1","group1-tes24");
+        dc.findAndClick("searchButton");
+        dc.waitForElementToBeRefreshedAndClickable(GWD.getDriver(), By.xpath("//ms-edit-button//button"));
+        dc.findAndClick("editButton");
+        dc.findAndSend("nameInEdit2","group1-edit");
+        dc.findAndClick("saveButton");
+    }
+
+    @And("Edit the new created school locations")
+    public void editTheNewCreatedSchoolLocations() {
+        dc.findAndClick("searchButton");
+        dc.waitForElementToBeRefreshedAndClickable(GWD.getDriver(), By.xpath("//td[text()='group1-tes28']/following-sibling::td[5]//ms-edit-button"));
+        dc.findAndClick("editButtonInLocation");
+        dc.findAndSend("nameInput","group1-edit");
+        dc.findAndClick("saveButton");
+    }
+
+    @And("Click on the element in the Dialog to Delete the Edited School Location")
+    public void clickOnTheElementInTheDialogToDeleteTheEditedSchoolLocation(DataTable elements) {
+        List<String> listElement = elements.asList(String.class);
+        for (int i = 0; i < listElement.size(); i++) {
+            dc.findAndClick(listElement.get(i));
+        }
+    }
+
+    @And("Wait until edit success message displayed")
+    public void waitUntilEditSuccessMessageDisplayed() {
+        dc.waitUntilVisibleofSuccessMessage(GWD.getDriver(),By.xpath("//*[contains(text(),'successfully')]"));
     }
 
 }
