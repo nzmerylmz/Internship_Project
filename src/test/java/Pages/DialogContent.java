@@ -120,6 +120,33 @@ public class DialogContent extends Parent{
     @FindBy(xpath="//td[contains(text(),'Baris77')]//following::div/ms-delete-button")
     private WebElement deleteButton2;
 
+    @FindBy(xpath = "(//mat-select[@role='combobox'])[3]")
+    private WebElement stage;
+
+    @FindBy(xpath = "(//mat-option[@role='option'])[2]//mat-pseudo-checkbox")
+    private WebElement newDocumentStage;
+
+    @FindBy(xpath = "(//ms-text-field[@placeholder='GENERAL.FIELD.NAME']//input)[1]")
+    private WebElement nameInEdit1;
+
+    @FindBy(xpath = "(//ms-text-field[@placeholder='GENERAL.FIELD.NAME']//input)[2]")
+    private WebElement nameInEdit2;
+
+    @FindBy(xpath = "(//mat-option[@role='option'])[2]")
+    private WebElement laboratory;
+
+    @FindBy(xpath = "//ms-integer-field[@placeholder='GENERAL.FIELD.CAPACITY']//input")
+    private WebElement capacity;
+
+    @FindBy(xpath = "//ms-text-field[@placeholder='GENERAL.FIELD.SHORTNAME']//input")
+    private WebElement shortNameInLocation;
+
+    @FindBy(xpath = "//td[text()='group1-edit']/following-sibling::td[5]//ms-delete-button")
+    private WebElement deleteButtonInLocation;
+
+    @FindBy(xpath = "//td[text()='group1-tes28']/following-sibling::td[5]//ms-edit-button")
+    private WebElement editButtonInLocation;
+
     WebElement myElement;
     public void findAndSend(String strElement, String value){
         switch (strElement)
@@ -139,6 +166,11 @@ public class DialogContent extends Parent{
             case "codeInputDialog" : myElement =codeInputDialog; break;
             case "order" : myElement =order; break;
             case "shortName2" : myElement =shortName2; break;
+            case "nameInEdit1" : myElement =nameInEdit1; break;
+            case "nameInEdit2" : myElement =nameInEdit2; break;
+            case "capacity" : myElement =capacity; break;
+            case "shortNameInLocation" : myElement =shortNameInLocation; break;
+
 
         }
         sendKeysFunction(myElement, value);
@@ -164,6 +196,11 @@ public class DialogContent extends Parent{
             case "specificDeleteButton" : myElement =specificDeleteButton; break;
             case "editButton2" : myElement =editButton2; break;
             case "deleteButton2" : myElement =deleteButton2; break;
+            case "stage" : myElement =stage; break;
+            case "newDocumentStage" : myElement =newDocumentStage; break;
+            case "laboratory" : myElement =laboratory; break;
+            case "deleteButtonInLocation" : myElement =deleteButtonInLocation; break;
+            case "editButtonInLocation" : myElement =editButtonInLocation; break;
 
 
 
