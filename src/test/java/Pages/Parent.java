@@ -60,11 +60,22 @@ public class Parent {
         Assert.assertTrue(element.getText().toLowerCase().contains(text.toLowerCase()));
     }
 
+
     public WebElement waitForElementToBeRefreshedAndClickable(WebDriver driver, By by) {
-        return new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30))
+        return new WebDriverWait(driver, Duration.ofSeconds(30))
                 .until(ExpectedConditions.refreshed(
                         ExpectedConditions.elementToBeClickable(by)));
     }
 
+    public void scrollToUpElement(WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) GWD.getDriver();
+        js.executeScript("arguments[0].setAttribute('style', 'top:0px')",element);
+        js.executeScript("arguments[0].scrollIntoView();",element);
+    }
+
+    public void waitUntilVisibleofSuccessMessage(WebDriver driver,By by) {
+        WebDriverWait wait = new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(by));
+    }
 
 }

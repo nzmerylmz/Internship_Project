@@ -6,11 +6,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
-
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 
 public class GWD {
     public static WebDriver driver;
@@ -71,8 +69,6 @@ public class GWD {
 
     }
 
-
-
     public static void Bekle(int saniye) {
         try {
             Thread.sleep(saniye * 1000);
@@ -80,6 +76,4 @@ public class GWD {
             throw new RuntimeException(e);
         }
     }
-
-
 }
