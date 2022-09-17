@@ -14,6 +14,15 @@ public class FormContent extends Parent{
     @FindBy(xpath = "(//mat-select[@formcontrolname='id']/div/div)[1]")
     private WebElement academicPeriod;
 
+    @FindBy(xpath = "(//span[text()='Currency'])[3]")
+    private WebElement currency;
+
+    @FindBy(xpath = "//span[text()=' TRY ']")
+    private WebElement currencyTry;
+
+
+
+
     WebElement myElement;
 
     public void findAndClick(String strElement){
@@ -21,6 +30,8 @@ public class FormContent extends Parent{
         switch (strElement)
         {
             case "academicPeriod" : myElement =academicPeriod; break;
+            case "currency" : myElement =currency; break;
+            case "currencyTry" : myElement =currencyTry; break;
         }
 
         clickFunction(myElement);

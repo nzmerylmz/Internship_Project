@@ -53,6 +53,11 @@ public class LeftNav extends Parent {
     @FindBy(xpath = "(//span[text()='Setup'])[4]")
     private WebElement educationSetup;
 
+    @FindBy(xpath = "//span[text()='Position Categories']")
+    private WebElement positionCategories;
+
+    @FindBy(xpath = "(//span[text()='Bank Accounts'])[1]")
+    private WebElement bankAccounts;
     @FindBy(xpath = "(//span[text()='Fields'])[1]")
     private WebElement fields;
     @FindBy(xpath = "//span[text()='Discounts']")
@@ -66,6 +71,7 @@ public class LeftNav extends Parent {
 
     @FindBy(xpath = "(//span[text()='Positions'])[1]")
     private WebElement Positions;
+
 
     @FindBy(xpath = " (//span[text()='Nationalities'])[1]")
     private WebElement Nationalities;
@@ -82,10 +88,10 @@ public class LeftNav extends Parent {
     @FindBy(xpath = "(//span[text()='Attestations'])[1]")
     private WebElement Attestations;
 
-    @FindBy(xpath="(//span[text()='Document Types'])[1]")
+    @FindBy(xpath = "(//span[text()='Document Types'])[1]")
     private WebElement documentTypes;
 
-    @FindBy(xpath="//span[text()='Locations']")
+    @FindBy(xpath = "//span[text()='Locations']")
     private WebElement locations;
 
     WebElement myElement;
@@ -93,6 +99,14 @@ public class LeftNav extends Parent {
     public void findAndClick(String strElement) {
 
         switch (strElement) {
+
+            case "positionCategories":
+                myElement = positionCategories;
+                break;
+            case "bankAccounts":
+                myElement = bankAccounts;
+                break;
+
             case "setupOne":
                 myElement = setupOne;
                 break;
@@ -165,9 +179,14 @@ public class LeftNav extends Parent {
             case "Attestations":
                 myElement = Attestations;
                 break;
-            case "documentTypes" : myElement =documentTypes; break;
-            case "locations" : myElement =locations; break;
+            case "documentTypes":
+                myElement = documentTypes;
+                break;
+            case "locations":
+                myElement = locations;
+                break;
         }
+
         clickFunction(myElement);
     }
 

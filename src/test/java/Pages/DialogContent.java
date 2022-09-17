@@ -9,6 +9,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.time.Duration;
 
 public class DialogContent extends Parent{
 
@@ -78,15 +84,20 @@ public class DialogContent extends Parent{
 
     @FindBy(xpath = "//button[contains(text(),'Accept all cookies')]")
     private WebElement acceptCookiesButton;
-
     @FindBy(css = "[formcontrolname='budgetAccountIntegrationCode']>input")
     private WebElement integrationCode;
 
-    @FindBy (css = "[formcontrolname='priority']>input")
+    @FindBy(css = "[formcontrolname='priority']>input")
     private WebElement priority;
+   @FindBy(xpath = "(//ms-edit-button[@class='ng-star-inserted']//button)[1]")
+   private WebElement editButton;
 
-    @FindBy( xpath="(//ms-edit-button//button)[1]")
-    private WebElement editButton;
+    @FindBy(xpath = "//ms-masked-text-field[@formcontrolname='iban']//input")
+    private WebElement iban;
+
+    @FindBy(xpath = "//ms-text-field[@formcontrolname='integrationCode']//input")
+    private WebElement integrationCode2; //bankAccount kısmı
+
 
     @FindBy( xpath="//ms-text-field[@placeholder='GENERAL.FIELD.NAME']//input")
     private WebElement namefields;
@@ -159,6 +170,8 @@ public class DialogContent extends Parent{
             case "searchInput" : myElement =searchInput; break;
             case "integrationCode" : myElement =integrationCode; break;
             case "priority" : myElement =priority; break;
+            case "iban" : myElement =iban; break;
+            case "integrationCode2" : myElement =integrationCode2; break;
             case "namefields" : myElement =namefields; break;
             case "description" : myElement =description; break;
             case "integrationCode32" : myElement =integrationCode32; break;
@@ -173,6 +186,7 @@ public class DialogContent extends Parent{
 
 
         }
+
         sendKeysFunction(myElement, value);
     }
 
@@ -205,8 +219,21 @@ public class DialogContent extends Parent{
 
 
         }
+
         clickFunction(myElement);
     }
+
+    public void findAndClickWithoutScroll(String strElement){
+        switch (strElement)
+        {
+            case "searchButton" : myElement =searchButton; break;
+            case "editButton" : myElement = editButton; break;
+            case "deleteButton" : myElement = deleteButton; break;
+        }
+
+        clickFunctionWithoutScroll(myElement);
+    }
+
 
     public void findAndContainsText(String strElement, String text){
         switch (strElement)
@@ -215,8 +242,30 @@ public class DialogContent extends Parent{
             case "successMessage" : myElement =successMessage; break;
             case "alreadyExist" : myElement =alreadyExist; break;
         }
+
         verifyContainsText(myElement,text);
     }
+    public void SearchAndClear(String searchText) throws AWTException {
+        findAndSend("searchInput", searchText);
+        findAndClickWithoutScroll("searchButton");
 
+        WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.textToBe(By.cssSelector("div[fxlayoutalign='center center'][class='control-full']"),"Search"));
+        findAndClickWithoutScroll("editButton");
+
+    }
+   public void SearchAndDeletee(String searchText) throws AWTException {
+       findAndSend("searchInput", searchText);
+       findAndClickWithoutScroll("searchButton");
+
+       WebDriverWait wait=new WebDriverWait(GWD.getDriver(), Duration.ofSeconds(30));
+       wait.until(ExpectedConditions.textToBe(By.cssSelector("div[fxlayoutalign='center center'][class='control-full']"),"Search"));
+       findAndClickWithoutScroll("deleteButton");
+       findAndClick("deleteDialogButton");
+   }
 }
+
+
+
+
 
